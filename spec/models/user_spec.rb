@@ -20,13 +20,13 @@ describe User do
 
 
 	describe "when name is not present" do
-		before { @user.name = "" }
+		before { @user.name = " " }
 		it { should_not be_valid }
 	end
 
 
  	describe "when email is not present" do
- 		before { @user.email = "" }
+ 		before { @user.email = " " }
  		it { should_not be_valid }
  	end
 
@@ -50,6 +50,7 @@ describe User do
  		it "should be valid" do
  			addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
  			addresses.each do |valid_address|
+ 				@user.email = valid_address
  				expect(@user).to be_valid
  			end
  		end
